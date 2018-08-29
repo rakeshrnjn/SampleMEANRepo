@@ -1,7 +1,22 @@
 const express = require('express');
 const app = express();
 //const bodyParser = require('body-parser');
+app.use(express.static('public'));
 app.use(express.json());
+//app.use(express.static)
+app.use((req, res, next)=>{
+   // console.log(req);
+   // console.log(res);
+    console.log('logging....');
+    next();
+});
+app.use((error, req, res, next)=>{
+    console.log('error');
+    //console.log(error);
+    next();
+});
+
+
 
 let genres = [
     { id: 1, name: 'Rock' },
